@@ -7,18 +7,18 @@ export function testRoutes(server: any) {
     let test = {
         status:true,
         message: null,
-        data: {id: 1 , name: "test name"},
+        data: [{id: 1 , name: "test name"}],
         erros: null,
     }
     
     return res.json(test);
 });
 
-    server.get('/errorTest', function(req: Request, res: Response, next: Next) {
+    server.get('/error-test', function(req: Request, res: Response, next: Next) {
         let errorTest = {
             message: 'Listing error',
             data: null,
-            erros: { 'field':['is required', 'is not string']},
+            erros: [{ 'field':['is required', 'is not string']}],
         }
         
         let err = new errors.UnprocessableEntityError({
