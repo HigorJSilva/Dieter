@@ -1,6 +1,5 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import { Response } from 'restify';
 import server from '../server'
 
 chai.use(chaiHttp);
