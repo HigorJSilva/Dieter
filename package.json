@@ -29,6 +29,8 @@
     "@types/sequelize": "^4.28.11",
     "chai-http": "^4.3.0",
     "dotenv": "^16.0.0",
+    "express-validator": "^6.14.0",
+    "lodash": "^4.17.21",
     "mariadb": "^3.0.0",
     "nodemon": "^2.0.15",
     "restify": "^8.6.1",
