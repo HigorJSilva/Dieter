@@ -10,7 +10,7 @@ export const database = new Sequelize(
     {
         define: {
             timestamps: false
-          },
+        },
         dialect: 'mariadb', 
         host: 'localhost',
         logging: false

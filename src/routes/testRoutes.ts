@@ -3,16 +3,16 @@ import errors from 'restify-errors'
 
 export function testRoutes(server: any) {
 
-  server.get('/test', function(req: Request, res: Response, next: Next) {
-    let test = {
-        status:true,
-        message: null,
-        data: [{id: 1 , name: "test name"}],
-        erros: null,
-    }
-    
-    return res.json(test);
-});
+    server.get('/test', function(req: Request, res: Response, next: Next) {
+        let test = {
+            status:true,
+            message: null,
+            data: [{id: 1 , name: "test name"}],
+            erros: null,
+        }
+        
+        return res.json(test);
+    });
 
     server.get('/error-test', function(req: Request, res: Response, next: Next) {
         let errorTest = {
