@@ -8,6 +8,9 @@ export const database = new Sequelize(
     <string>process.env.DB_USER,
     <string>process.env.DB_PASSWORD,
     {
+        define: {
+            timestamps: false
+          },
         dialect: 'mariadb', 
         host: 'localhost',
         logging: false
