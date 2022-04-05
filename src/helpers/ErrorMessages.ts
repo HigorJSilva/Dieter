@@ -5,6 +5,11 @@ export const invalidMessage = 'Invalid value'
 export const uniqueMessage = 'Value already in use'
 export const existsMessage = 'Resource Not found'
 export const arrayMessage = 'Field is not an array'
+export const resourceNotFoundError = (FieldName: string) => `${FieldName} not found`
+
+export const unauthorizedError = 'User not authorized'
+
+export const errorLogin = 'Password did not match'
 
 export const errorCreateUsers = 'Could not register user'
 export const errorUpdateUsers = 'Could not update user'
