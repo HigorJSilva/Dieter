@@ -6,7 +6,7 @@
   "scripts": {
     
     "test": "mocha --require ts-node/register src/tests/**/*.spec.ts",
-      "dev": "node --inspect -r sucrase/register src/server.ts"
+    "dev": "nodemon --exec node --inspect -r sucrase/register src/server.ts"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
