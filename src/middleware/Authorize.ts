@@ -4,10 +4,7 @@ import errors from 'restify-errors';
 import { ApiResponse } from '../helpers/ApiResponse';
 import { unauthorizedError } from '../helpers/ErrorMessages';
 
-
-
 export function authorize() {
-    
 
     return [
 
@@ -15,22 +12,22 @@ export function authorize() {
             const auth = <string> req.headers["authorization"]
 
             if(!auth){
-                return throwUnauthoriuzedError(next);
+                return throwUnauthorizedError(next);
             }
 
-            let ok = jwtService.verify( auth.split(' ')[1], <string>process.env.SECRET);
-
-                if (!ok) {
-                    return throwUnauthoriuzedError(next);
-                }
-
-                return next();
+            let jwtVerified = jwtService.verify( auth.split(' ')[1], <string>process.env.SECRET);
+            if (!jwtVerified) {
+                return throwUnauthorizedError(next);
             }
+
+            req.params.user = jwtService.decode(auth.split(' ')[1]);
+            return next();
+        }
 
     ];
 }
 
-function throwUnauthoriuzedError(next: Next) {
+function throwUnauthorizedError(next: Next) {
     const error = new errors.UnauthorizedError({
         info: new ApiResponse(false, unauthorizedError, null, null)
     });
