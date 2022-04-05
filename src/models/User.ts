@@ -1,5 +1,5 @@
-import { InferAttributes, InferCreationAttributes, Model } from 'sequelize';
-import { DataTypes } from 'sequelize';
+import { InferAttributes, InferCreationAttributes, Model, DataTypes } from 'sequelize';
+import * as bcrypt from 'bcrypt';
 import { database } from '../config/database'; 
 
 export interface IUser extends Model<InferAttributes<IUser> , InferCreationAttributes<IUser>>{
@@ -26,5 +26,8 @@ export const User = database.define('user', {
     password: {
         type: DataTypes.STRING,
         allowNull: false,
+        set(value: string) {
+            this.setDataValue('password', bcrypt.hashSync(value,10));
+        },
     },
 })

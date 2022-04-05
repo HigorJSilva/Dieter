@@ -5,7 +5,7 @@ import { unique } from "../customRules/CustomRules";
 
 export interface RegisterInterface {
     email: string,
-    password: number,
+    password: string,
 }
 
 export const StoreUserRequest = [
