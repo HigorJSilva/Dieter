@@ -24,7 +24,7 @@ export async function authenticate(login: ILogin) {
         return { user: protectedUser, token };
 
     } catch (error: any) {
-        if(error.message ==  resourceNotFoundError('Email') ) {
+        if(error ==  resourceNotFoundError('Email') ) {
             return new errors.ResourceNotFoundError({
                 info: new ApiResponse(false, resourceNotFoundError('Email'), null, error.message)
             })
