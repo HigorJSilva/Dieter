@@ -34,14 +34,14 @@ export async function storeTenant(req: Request, res:Response, next: Next){
 export async function searchTenant(req: Request, res:Response, next: Next){
    
     const filteredRequest = getFilteredRequest(req);
-    const user = await tenantService.searchTenant(filteredRequest.search, filteredRequest.user.id)
+    const tenants = await tenantService.searchTenant(filteredRequest.search, filteredRequest.user.id)
 
-    if(user instanceof Error){
-        return next(user)
+    if(tenants instanceof Error){
+        return next(tenants)
     }
     
     res.status(200);
-    return res.json( new ApiResponse(true, null, user, null))
+    return res.json( new ApiResponse(true, null, tenants, null))
 }
 
 export async function updateTenant(req: Request, res:Response, next: Next){
@@ -60,12 +60,12 @@ export async function updateTenant(req: Request, res:Response, next: Next){
 export async function deleteTenant(req: Request, res:Response, next: Next){
    
     const filteredRequest = getFilteredRequest(req);
-    const user = await tenantService.deleteTenant(filteredRequest.id)
+    const tenant = await tenantService.deleteTenant(filteredRequest.id)
 
-    if(user instanceof Error){
-        return next(user)
+    if(tenant instanceof Error){
+        return next(tenant)
     }
     
     res.status(200);
-    return res.json( new ApiResponse(true, null, user, null))
+    return res.json( new ApiResponse(true, null, tenant, null))
 }
