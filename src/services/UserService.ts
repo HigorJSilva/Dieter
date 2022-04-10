@@ -1,7 +1,7 @@
 import { IUser, User } from "../models/User";
 import errors from 'restify-errors'
 import { ApiResponse } from "../helpers/ApiResponse";
-import { errorCreateUsers, resourceNotFoundError } from "../helpers/ErrorMessages";
+import { errorCreateResorce, resourceNotFoundError } from "../helpers/ErrorMessages";
 
 export async function storeUser(user: IUser) {
     try {
@@ -13,7 +13,7 @@ export async function storeUser(user: IUser) {
 
     } catch (error: any) {
         return new errors.UnprocessableEntityError({
-            info: new ApiResponse(false, errorCreateUsers, null, error.message)
+            info: new ApiResponse(false, errorCreateResorce('user'), null, error.message)
         })
     }
 }
