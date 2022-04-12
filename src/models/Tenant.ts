@@ -23,6 +23,7 @@ export const Tenant = database.define('tenant', {
         },
         userId:{
             type: DataTypes.BIGINT,
+            allowNull: false,
         },
         name: {
             type: DataTypes.STRING,

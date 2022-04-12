@@ -67,5 +67,5 @@ export async function deleteTenant(req: Request, res:Response, next: Next){
     }
     
     res.status(200);
-    return res.json( new ApiResponse(true, null, tenant, null))
+    return res.json( new ApiResponse(true, null, null, null))
 }

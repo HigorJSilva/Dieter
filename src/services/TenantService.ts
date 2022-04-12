@@ -2,6 +2,7 @@ import { ITenant, ITenantCrud, Tenant } from "../models/Tenant";
 import errors from 'restify-errors'
 import { ApiResponse } from "../helpers/ApiResponse";import { errorCreateResorce, errorDeleteResorce, errorListResorce, errorUpdateResorce, resourceNotFoundError } from "../helpers/ErrorMessages";
 import { DataTypes } from "sequelize";
+import { replaceUndefinedFields } from "../helpers/Utils";
 
  "../helpers/ErrorMessages";
 
@@ -27,7 +28,7 @@ export async function storeTenant(tenant: ITenant & ITenantCrud) {
         tenant.userId = tenant.user.id;
 
         const newTenant = await Tenant.create({...tenant})
-        return  newTenant.get();
+        return replaceUndefinedFields(newTenant.get());
 
     } catch (error: any) {
         return new errors.UnprocessableEntityError({
