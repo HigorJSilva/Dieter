@@ -2,6 +2,7 @@ import { IProperty, IPropertyCrud, Property } from "../models/Property";
 import errors from 'restify-errors'
 import { ApiResponse } from "../helpers/ApiResponse";import { errorCreateResorce, errorDeleteResorce, errorListResorce, errorUpdateResorce, resourceNotFoundError } from "../helpers/ErrorMessages";
 import { DataTypes } from "sequelize";
+import { replaceUndefinedFields } from "../helpers/Utils";
 
 export async function indexProperty(userId: number) {
     try {
@@ -25,7 +26,7 @@ export async function storeProperty(property: IProperty & IPropertyCrud) {
         property.userId = property.user.id;
 
         const newProperty = await Property.create({...property})
-        return newProperty.get();
+        return replaceUndefinedFields(newProperty.get());
 
     } catch (error: any) {
         return new errors.UnprocessableEntityError({

@@ -54,7 +54,7 @@ export async function updateProperty(req: Request, res:Response, next: Next){
     }
     
     res.status(200);
-    return res.json( new ApiResponse(true, null, null, null))
+    return res.json( new ApiResponse(true, null, property, null))
 }
 
 export async function deleteProperty(req: Request, res:Response, next: Next){
