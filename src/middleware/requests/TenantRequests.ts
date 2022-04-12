@@ -28,7 +28,7 @@ export const UpdateTenantRequest = [
     ...StoreTenantRequest,
     param('id')
         .notEmpty().withMessage(ErrorMessages.requiredMessage).bail()
-        .custom((resourceId, {req})=> authorizeAction(Tenant, resourceId, req.params!.user.id)).withMessage(ErrorMessages.resourceNotFoundError('Tenant'))
+        .custom((resourceId, {req})=> authorizeAction(Tenant, resourceId, req.params!.user.id)).withMessage(ErrorMessages.unauthorizedError)
 ];
 
 export const searchTenantRequest = [
@@ -41,5 +41,5 @@ export const DeleteTenantRequest = [
     ...AuthenticatedUserRequest,
     param('id')
         .notEmpty().withMessage(ErrorMessages.requiredMessage).bail()
-        .custom((resourceId, {req})=> authorizeAction(Tenant, resourceId, req.params!.user.id)).withMessage(ErrorMessages.resourceNotFoundError('Tenant'))
+        .custom((resourceId, {req})=> authorizeAction(Tenant, resourceId, req.params!.user.id)).withMessage(ErrorMessages.unauthorizedError)
 ];
