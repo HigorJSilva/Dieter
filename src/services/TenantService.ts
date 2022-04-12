@@ -4,8 +4,6 @@ import { ApiResponse } from "../helpers/ApiResponse";import { errorCreateResorce
 import { DataTypes } from "sequelize";
 import { replaceUndefinedFields } from "../helpers/Utils";
 
- "../helpers/ErrorMessages";
-
 export async function indexTenant(userId: number) {
     try {
         
@@ -57,7 +55,6 @@ export async function searchTenant(search: string, userId: string) {
 
         return searchTenant;
     } catch (error: any) {
-        console.log('error :>> ', error);
         return new errors.UnprocessableEntityError({
             info: new ApiResponse(false, resourceNotFoundError('Tenant'), null, error.message)
         })
