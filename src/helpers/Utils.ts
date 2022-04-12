@@ -6,3 +6,8 @@ export function getFilteredRequest(req: Request) {
         includeOptionals: true,
     });
 }
+
+export function replaceUndefinedFields(object: any) {
+    Object.keys(object).forEach(key => object[key] === undefined ? object[key] = null : {});
+    return object;
+}

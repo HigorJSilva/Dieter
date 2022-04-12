@@ -20,9 +20,9 @@ export async function authorizeAction(model: ModelStatic<any>, value: any, userI
     });
     
     if(!vava){
-        false
+       return Promise.reject();
     }
-
-    return vava.userId === userId ? true : false;
+    
+    return vava.userId === userId ? true : Promise.reject();
     
 }
