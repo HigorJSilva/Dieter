@@ -53,3 +53,12 @@ export const DeactivateLeaseRequest = [
         .notEmpty().withMessage(ErrorMessages.requiredMessage).bail()
         .custom((resourceId, {req})=> authorizeAction(Lease, resourceId, req.params!.user.id)).withMessage(ErrorMessages.unauthorizedError)
 ];
+
+export const searchLeaseByPropertyRequest = [
+    ...AuthenticatedUserRequest,
+    param('id')
+        .notEmpty().withMessage(ErrorMessages.requiredMessage).bail(),
+    body('status')
+        .optional({checkFalsy: true})
+        .isBoolean()
+];

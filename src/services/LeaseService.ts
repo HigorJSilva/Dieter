@@ -172,21 +172,22 @@ export async function deactivateLease(lease: ILease & ILeaseCrud) {
     }
 }
 
-// export async function changeActiveStatus(id: DataTypes.BigIntDataType) {
-    
-//     try {
-        
-//         await Property.destroy({
-//             where: {
-//                 id: `${id}`,
-//             }
-//         })
+export async function getLeaseByProperty(userId: string, propertyId: string, status: boolean) {
+    try {
+        const leases = await Lease.findAll({
+            include: [ { model: Tenant, as: 'tenant' }, { model: Property, as: 'property' } ],
+            where:{
+                userId: userId,
+                propertyId: propertyId,
+                active: status
+            }
+        });
 
-//         return true;
+        return leases;
 
-//     } catch (error: any) {
-//         return new errors.UnprocessableEntityError({
-//             info: new ApiResponse(false, errorDeleteResorce('lease'), null, error.message)
-//         })
-//     }
-// }
+    } catch (error: any) {
+        return new errors.UnprocessableEntityError({
+            info: new ApiResponse(false, resourceNotFoundError('lease'), null, error.message)
+        });
+    }
+}

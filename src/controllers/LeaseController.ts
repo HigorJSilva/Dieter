@@ -82,3 +82,16 @@ export async function showPastLeases(req: Request, res:Response, next: Next){
     res.status(200);
     return res.json( new ApiResponse(true, null, leases, null))
 }
+
+export async function getLeaseByProperty(req: Request, res:Response, next: Next){
+   
+    const filteredRequest = getFilteredRequest(req);
+    const leases = await LeaseService.getLeaseByProperty(filteredRequest.user.id, filteredRequest.id, filteredRequest.status)
+
+    if(leases instanceof Error){
+        return next(leases)
+    }
+    
+    res.status(200);
+    return res.json( new ApiResponse(true, null, leases, null))
+}
