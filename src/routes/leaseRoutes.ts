@@ -7,6 +7,7 @@ import { DeactivateLeaseRequest, searchLeaseRequest, StoreLeaseRequest, UpdateLe
 export function leaseRoutes(prefix: string,server: any) {
 
   server.get(prefix, authorize(), AuthenticatedUserRequest, validateRequest, LeaseController.indexLease)
+  server.get(`${prefix}/past-leases`, authorize(), AuthenticatedUserRequest, validateRequest, LeaseController.showPastLeases)
   server.post(prefix, authorize(), StoreLeaseRequest, validateRequest, LeaseController.storeLease)
   server.get(`${prefix}/:id`, authorize(), searchLeaseRequest, validateRequest, LeaseController.searchLease)
   server.put(`${prefix}/:id`, authorize(), UpdateLeaseRequest, validateRequest, LeaseController.updateLease)

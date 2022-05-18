@@ -5,14 +5,14 @@ import { ILease, ILeaseCrud, Lease } from "../models/Lease";
 import { Property } from '../models/Property';
 import { Tenant } from '../models/Tenant';
 
-export async function indexLease(userId: number) {
+export async function indexLease(userId: number, status = true) {
     try {
         
         const leases = await Lease.findAll({
             include: [ { model: Tenant, as: 'tenant' }, { model: Property, as: 'property' } ],
             where:{
                 userId: userId,
-                active: true
+                active: status
             }
         });
 

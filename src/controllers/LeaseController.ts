@@ -69,3 +69,16 @@ export async function deactivateLease(req: Request, res:Response, next: Next){
     res.status(200);
     return res.json( new ApiResponse(true, null, lease, null))
 }
+
+export async function showPastLeases(req: Request, res:Response, next: Next){
+   
+    const filteredRequest = getFilteredRequest(req);
+    const leases = await LeaseService.indexLease(filteredRequest.user.id, false)
+
+    if(leases instanceof Error){
+        return next(leases)
+    }
+    
+    res.status(200);
+    return res.json( new ApiResponse(true, null, leases, null))
+}
