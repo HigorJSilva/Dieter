@@ -8,6 +8,9 @@ export const existsMessage = 'Resource Not found'
 export const arrayMessage = 'Field is not an array'
 export const resourceNotFoundError = (FieldName: string) => `${FieldName} not found`
 
+export const propertyInUseError = 'Property already leased'
+export const updatedDeactivatedLease = 'Cannot update deactivated lease'
+
 export const unauthorizedError = 'User not authorized'
 export const errorLogin = 'Password did not match'
 
