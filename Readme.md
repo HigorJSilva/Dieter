@@ -9,3 +9,9 @@ To create a better quality of life for the app implement an array of additional 
     * Store expenses for tied with a rent or empty properties;
     * Create invoices with monthly expenses and payment information;
     * Create request for water and electricity companies for overdue bills
+
+### Main dependecies used
+    * Sequelize: ORM for MariaDB
+    * Mariadb: SQL relational database
+    * Restify: Web service framework
+    * Express validator: Validate request middleware-like
