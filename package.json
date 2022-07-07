@@ -19,6 +19,7 @@
     "@types/restify-errors": "^4.3.4",
     "@typescript-eslint/eslint-plugin": "^5.16.0",
     "@typescript-eslint/parser": "^5.16.0",
+    "@types/sequelize": "^4.28.11",
     "chai": "^4.3.6",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
@@ -30,18 +31,15 @@
     "typescript": "^4.6.3"
   },
   "dependencies": {
-    "@types/sequelize": "^4.28.11",
     "bcrypt": "^5.0.1",
     "chai-http": "^4.3.0",
     "dotenv": "^16.0.0",
-    "express-jwt": "^6.1.1",
     "express-validator": "^6.14.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mariadb": "^3.0.0",
     "nodemon": "^2.0.15",
     "restify": "^8.6.1",
-    "restify-jwt-community": "^1.1.25",
     "sequelize": "^6.17.0"
   }
 }
